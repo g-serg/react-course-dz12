@@ -12,10 +12,7 @@ export const TradeWrapper = styled.div`
 const enhance = compose(withRouter);
 
 export const TradeSwitcher = () => (
-  <TradeWrapper>
-    <TradeLink type="btc" />
-    <TradeLink type="eth" />
-  </TradeWrapper>
+  <TradeWrapper>{['btc', 'eth'].map(type => <TradeLink key={type} type={type} />)}</TradeWrapper>
 );
 
 export default enhance(TradeSwitcher);

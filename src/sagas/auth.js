@@ -1,4 +1,4 @@
-import {loginSuccess, logout} from '../actions/auth';
+import {loginSuccess, logout, registrationSuccess} from '../actions/auth';
 import {take, put, call, select, fork} from 'redux-saga/effects';
 import {setTokenApi, clearTokenApi} from '../api';
 import {getIsAuthorized} from '../reducers/auth';
@@ -7,6 +7,7 @@ import {
   setTokenToLocalStorage,
   removeTokenFromLocalStorage,
 } from '../localStorage';
+import {fetchWalletRequest} from '../actions/wallet';
 
 export function* authFlow() {
   while (true) {
@@ -19,13 +20,14 @@ export function* authFlow() {
         token = localStorageToken;
         yield put(loginSuccess());
       } else {
-        const action = yield take(loginSuccess);
+        const action = yield take([loginSuccess, registrationSuccess]);
         token = action.payload.jwt;
       }
     }
 
     yield call(setTokenApi, token);
     yield call(setTokenToLocalStorage, token);
+    yield put(fetchWalletRequest());
     yield take(logout);
     yield call(removeTokenFromLocalStorage);
     yield call(clearTokenApi);

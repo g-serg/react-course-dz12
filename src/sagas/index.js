@@ -3,6 +3,7 @@ import {loginWatch} from './login';
 import {registrationWatch} from './registration';
 import {setTokenWatch} from './auth';
 import {fetchBtcWatch, fetchEthWatch, currencyWatch} from './currency';
+import {fetchWalletWatch} from './wallet';
 
 export default function*() {
   yield fork(setTokenWatch);
@@ -11,4 +12,5 @@ export default function*() {
   yield fork(fetchBtcWatch);
   yield fork(fetchEthWatch);
   yield fork(currencyWatch);
+  yield fork(fetchWalletWatch);
 }
