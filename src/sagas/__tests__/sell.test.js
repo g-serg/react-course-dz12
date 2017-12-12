@@ -6,7 +6,7 @@ import {sellCurrency} from '../../api';
 describe('Saga sellCurrency:', () => {
   const action = {payload: {currencyName: 'test_currency', value: 'test_value'}};
   const response = {data: {}};
-  const error = {data: {message: 'error_message'}};
+  const error = 'error_message';
 
   let num = 1;
 
@@ -27,7 +27,7 @@ describe('Saga sellCurrency:', () => {
   });
 
   it(num++ + '. dispatch sellCurrencyFailure with user from call on success call', () => {
-    const value = put(sellCurrencyFailure(error.data.message));
+    const value = put(sellCurrencyFailure(error));
 
     const saga = sellCurrencySaga(action);
     saga.next();
