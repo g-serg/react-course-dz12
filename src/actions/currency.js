@@ -13,6 +13,14 @@ const {
     fetchEthRequest,
     fetchEthFailure,
     fetchEthSuccess,
+    //
+    buyCurrencyRequest,
+    buyCurrencyFailure,
+    buyCurrencySuccess,
+    //
+    sellCurrencyRequest,
+    sellCurrencyFailure,
+    sellCurrencySuccess,
   },
 } = createActions({
   CURRENCY: {
@@ -27,6 +35,14 @@ const {
     FETCH_ETH_REQUEST: undefined,
     FETCH_ETH_FAILURE: undefined,
     FETCH_ETH_SUCCESS: undefined,
+    //
+    BUY_CURRENCY_REQUEST: undefined,
+    BUY_CURRENCY_FAILURE: undefined,
+    BUY_CURRENCY_SUCCESS: undefined,
+    //
+    SELL_CURRENCY_REQUEST: undefined,
+    SELL_CURRENCY_FAILURE: undefined,
+    SELL_CURRENCY_SUCCESS: undefined,
   },
 });
 
@@ -42,4 +58,12 @@ export {
   fetchEthRequest,
   fetchEthFailure,
   fetchEthSuccess,
+  //
+  buyCurrencyRequest,
+  buyCurrencyFailure,
+  buyCurrencySuccess,
+  //
+  sellCurrencyRequest,
+  sellCurrencyFailure,
+  sellCurrencySuccess,
 };

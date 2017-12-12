@@ -35,6 +35,7 @@ const Right = styled.span`
   text-overflow: ellipsis;
   overflow: hidden;
 `;
+
 const Desc = styled.div`
   flex: 1 1;
   text-align: left;
@@ -51,16 +52,14 @@ const enhance = compose(
 
 export const WalletRecord = props => {
   const {currency, coins} = props;
-
-  const left = +coins[currency],
-    right = String(coins[currency] % 1 || '0.0').substr(2, 7);
+  const parts = String(coins[currency]).split('.');
 
   return (
     <Container>
       <Value>
-        <Left>{left}</Left>
+        <Left>{parts[0]}</Left>
         .
-        <Right>{right}</Right>
+        <Right>{parts.length > 1 ? parts[1].substr(0, 3) : 0}</Right>
       </Value>
       <Desc>{currency === 'usd' ? '$' : String(currency).toLocaleUpperCase()}</Desc>
     </Container>

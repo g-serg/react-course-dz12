@@ -20,7 +20,7 @@ const Main = styled.main`
 `;
 
 const Container = styled.div`
-  /* width: 1200px; */
+  width: 1200px;
   padding-top: 10px;
 `;
 
@@ -38,7 +38,7 @@ export const TradeLayout = () => (
     <Container>
       <Columns>
         <TradeControl />
-        <TradeGraph />;
+        <TradeGraph />
       </Columns>
     </Container>
   </Main>

@@ -7,8 +7,7 @@ export function* loginSaga(action) {
     const response = yield call(login, action.payload);
     yield put(loginSuccess(response.data));
   } catch (response) {
-    const {message} = response.data;
-    yield put(loginFailure(message));
+    yield put(loginFailure(response.data.message));
   }
 }
 

@@ -90,3 +90,13 @@ export const getMax = ({currency}, type) => {
   const values = currency[type || currency.selected].map(r => Math.max(r.sell, r.purchase));
   return values.length ? values.reduce((acc, val) => Math.max(acc, val)) : 0;
 };
+
+const getCurrent = (currency, type, need) => {
+  return currency[type].length ? currency[type][0][need] : 0;
+};
+
+export const getCurrentBtcSell = ({currency}) => getCurrent(currency, 'btc', 'sell');
+export const getCurrentBtcPurchase = ({currency}) => getCurrent(currency, 'btc', 'purchase');
+
+export const getCurrentEthSell = ({currency}) => getCurrent(currency, 'eth', 'sell');
+export const getCurrentEthPurchase = ({currency}) => getCurrent(currency, 'eth', 'purchase');

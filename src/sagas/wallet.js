@@ -1,6 +1,7 @@
 import {takeLatest, call, put, fork} from 'redux-saga/effects';
 import {getWallet} from '../api';
 import {fetchWalletSuccess, fetchWalletFailure, fetchWalletRequest} from '../actions/wallet';
+import {sellCurrencySuccess, buyCurrencySuccess} from '../actions/currency';
 
 export function* fetchWalletSaga(action) {
   try {
@@ -15,10 +16,10 @@ export function* fetchWalletSaga(action) {
   }
 }
 
-function* onFetchFollowerWatch() {
-  yield takeLatest(fetchWalletRequest, fetchWalletSaga);
+function* onFetchWalletWatch() {
+  yield takeLatest([fetchWalletRequest, sellCurrencySuccess, buyCurrencySuccess], fetchWalletSaga);
 }
 
 export function* fetchWalletWatch() {
-  yield fork(onFetchFollowerWatch);
+  yield fork(onFetchWalletWatch);
 }

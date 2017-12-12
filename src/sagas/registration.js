@@ -7,9 +7,8 @@ export function* registrationSaga(action) {
     const response = yield call(registration, action.payload);
     yield put(registrationSuccess(response.data));
   } catch (response) {
-    const error = `email: ${response.data.message.email.join(',')}`;
-
-    yield put(registrationFailure(error));
+    const errorMsg = `email: ${response.data.message.email.join(',')}`;
+    yield put(registrationFailure(errorMsg));
   }
 }
 

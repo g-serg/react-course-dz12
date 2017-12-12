@@ -1,6 +1,7 @@
 import {fetchWalletRequest, fetchWalletSuccess, fetchWalletFailure} from '../actions/wallet';
 import {combineReducers} from 'redux';
 import {handleActions} from 'redux-actions';
+import {sellCurrencyFailure, buyCurrencyFailure} from '../actions/currency';
 
 const isLoading = handleActions(
   {
@@ -27,6 +28,8 @@ const error = handleActions(
     [fetchWalletRequest]: () => null,
     [fetchWalletSuccess]: () => null,
     [fetchWalletFailure]: (state, action) => action.payload,
+    [buyCurrencyFailure]: (state, action) => action.payload,
+    [sellCurrencyFailure]: (state, action) => action.payload,
   },
   null,
 );
